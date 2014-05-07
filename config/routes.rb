@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :forms
+  end
+
   root 'pages#index'
   devise_for :users
   resources :forms, only: %i[index show]
