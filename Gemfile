@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -50,3 +51,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
 end
+
+gem 'rails-assets-bootstrap'
+gem 'rails-assets-select2'
