@@ -40,17 +40,17 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'kaminari'
-# gem 'carrierwave'
 gem 'simple_form', '3.1.0.rc1'
-# gem 'settingslogic'
 gem 'rails-i18n'
-# gem 'rmagick', require: 'RMagick'
+gem 'devise'
+gem 'devise-i18n'
+
+# assets
+gem 'rails-assets-bootstrap'
+gem 'rails-assets-select2'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
 end
-
-gem 'rails-assets-bootstrap'
-gem 'rails-assets-select2'
