@@ -1,4 +1,4 @@
-class Admin::Form < Form
+class Field < ActiveRecord::Base
   # scope macros
 
   # Concerns macros
@@ -8,7 +8,7 @@ class Admin::Form < Form
   # Attributes related macros
 
   # association macros
-  has_many :fields
+  belongs_to :form
 
   # validation macros
 

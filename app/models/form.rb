@@ -8,6 +8,7 @@ class Form < ActiveRecord::Base
   # Attributes related macros
 
   # association macros
+  has_many :fields
 
   # validation macros
 
