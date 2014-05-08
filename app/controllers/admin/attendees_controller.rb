@@ -25,8 +25,7 @@ class Admin::AttendeesController < AdminController
   # POST /admin/attendees
   # POST /admin/attendees.json
   def create
-    @admin_attendee = Admin::Attendee.new(admin_attendee_params)
-
+    @admin_attendee = @admin_form.attendees.new(admin_attendee_params)
     respond_to do |format|
       if @admin_attendee.save
         format.html { redirect_to admin_form_attendee_path(@admin_form, @admin_attendee), notice: t('crud.created_successfully!', name: Admin::Attendee.model_name.human) }
@@ -43,7 +42,7 @@ class Admin::AttendeesController < AdminController
   def update
     respond_to do |format|
       if @admin_attendee.update(admin_attendee_params)
-        format.html { redirect_to @admin_attendee, notice: t('crud.updated_successfully!', name: Admin::Attendee.model_name.human) }
+        format.html { redirect_to admin_form_attendee_path(@admin_form, @admin_attendee), notice: t('crud.updated_successfully!', name: Admin::Attendee.model_name.human) }
         format.json { render :show, status: :ok, location: @admin_attendee }
       else
         format.html { render :edit }
@@ -77,7 +76,7 @@ class Admin::AttendeesController < AdminController
       params
         .require(:admin_attendee)
         .permit(
-          :user_id, :form_id, field_values_attributes: %i[id _destroy attendee_id field_id]
+          :user_id, :form_id, field_values_attributes: %i[id _destroy attendee_id field_id value]
         )
     end
 end

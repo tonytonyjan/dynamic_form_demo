@@ -51,4 +51,31 @@ module AdminHelper
 
   def notice_message
   end
+
+  def build_input attendee, field
+    id = SecureRandom.random_number(9999999999999)
+    ret = hidden_field_tag "admin_attendee[field_values_attributes][#{id}][field_id]", field.id
+    if field_value = field.value_of(attendee)
+      ret += hidden_field_tag "admin_attendee[field_values_attributes][#{id}][id]", field_value.id
+    end
+    input_name = "admin_attendee[field_values_attributes][#{id}][value]"
+    input_value = field_value ? field_value.value : nil
+    ret += case field.type
+    when 'text'
+      text_field_tag input_name, input_value, class: 'form-control'
+    when 'textarea'
+      text_area_tag input_name, input_value, class: 'form-control'
+    when 'select'
+      select_tag input_name, options_for_select(field.options, input_value), include_blank: false, class: 'form-control'
+    when 'checkbox'
+      ret2 = ''.html_safe
+      field.options.each_with_index do |option, i|
+        id = "radio_#{i}"
+        ret2 += content_tag :div, class: :radio do
+          label_tag id, radio_button_tag(input_name, option, option == input_value, id: id) + option
+        end
+      end
+      ret2
+    end
+  end
 end

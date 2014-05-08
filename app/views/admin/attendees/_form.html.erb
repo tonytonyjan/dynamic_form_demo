@@ -13,6 +13,15 @@
         <%= f.input_field :form_id, as: :string, class: 'select2-single', data: {model: :Form, column: :title, text: @admin_attendee.form.try(:title).to_s} %>
       </div>
     </div>
+
+    <% @admin_form.fields.each do |field| %>
+      <div class="form-group">
+        <%= label_tag 'xxx', field.name, class: 'col-sm-1 control-label' %>
+        <div class="col-sm-9">
+          <%= build_input @admin_attendee, field %>
+        </div>
+      </div>
+    <% end %>
   </div>
 
   <div class="form-actions">

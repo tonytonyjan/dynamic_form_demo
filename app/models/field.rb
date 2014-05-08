@@ -11,6 +11,7 @@ class Field < ActiveRecord::Base
 
   # association macros
   belongs_to :form
+  has_many :field_values
 
   # validation macros
   enumerize :type, in: %i[text textarea checkbox select]
@@ -21,6 +22,10 @@ class Field < ActiveRecord::Base
   def options= obj
     obj = obj.split(',') if obj.is_a? String
     super obj
+  end
+
+  def value_of(attendee)
+    field_values.find_by(attendee: attendee)
   end
 
   protected
