@@ -10,7 +10,7 @@
 
 <div class="page-header"><h2><%= Field.model_name.human %></h2></div>
 
-<table id="fields" class="table">
+<table class="table">
   <thead>
     <tr>
       <%= th_for Field, :name, :type, :required, :multiple, :options %>
@@ -19,8 +19,27 @@
   </thead>
   <tbody>
     <% @admin_form.fields.each do |field| %>
-      <tr class="fields">
+      <tr>
         <%= td_for field, :name, :type_text, :required, :multiple, :options %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="page-header"><h2><%= Attendee.model_name.human %></h2></div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <%= th_for Attendee, :id, :user, :form %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admin_form.attendees.each do |field| %>
+      <tr>
+        <%= td_for field, :id, %i[user email] %>
+        <%= td_action_for field %>
       </tr>
     <% end %>
   </tbody>
