@@ -3,6 +3,7 @@ zh-TW:
     models:
       user: 成員
       form: 報名表
+      field: 欄位
     attributes:
       user:
         email: 電子郵件

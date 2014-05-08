@@ -1,4 +1,5 @@
 class Field < ActiveRecord::Base
+  extend Enumerize
   self.inheritance_column = nil
   # scope macros
 
@@ -12,7 +13,7 @@ class Field < ActiveRecord::Base
   belongs_to :form
 
   # validation macros
-  enum type: %i[text textarea]
+  enumerize :type, in: %i[text textarea]
 
   # callbacks
 

@@ -1,3 +1,4 @@
+<div class="page-header"><h2><%= Field.model_name.human %></h2></div>
 <table id="fields" class="table">
   <thead>
     <tr>
@@ -9,13 +10,13 @@
     <%= f.simple_fields_for :fields, wrapper: false do |ff| %>
       <tr class="fields">
         <td><%= ff.input_field :name, label: false %></td>
-        <td><%= ff.input_field :type, label: false %></td>
+        <td><%= ff.input_field :type, label: false, include_blank: false %></td>
         <td><%= ff.input_field :required, label: false %></td>
         <td><%= ff.input_field :multiple, label: false %></td>
         <td><%= ff.input_field :options, label: false %></td>
-        <td><%= ff.link_to_remove 'remove' %></td>
+        <td><%= ff.link_to_remove content_tag(:span, nil, class: 'glyphicon glyphicon-trash') %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= f.link_to_add "Add a price", :fields, class: 'btn btn-xs btn-success', data: {target: '#fields'} %>
+<%= f.link_to_add content_tag(:span, nil, class: 'glyphicon glyphicon-plus'), :fields, class: 'btn btn-xs btn-success', data: {target: '#fields'} %>

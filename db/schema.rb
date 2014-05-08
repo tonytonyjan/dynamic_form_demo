@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20140507065352) do
   enable_extension "plpgsql"
 
   create_table "fields", force: true do |t|
-    t.integer  "form_id"
-    t.string   "name"
-    t.string   "type"
-    t.boolean  "required"
-    t.boolean  "multiple"
-    t.string   "options",    array: true
+    t.integer  "form_id",                     null: false
+    t.string   "name",                        null: false
+    t.string   "type",       default: "text", null: false
+    t.boolean  "required",   default: false,  null: false
+    t.boolean  "multiple",   default: false,  null: false
+    t.string   "options",                                  array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -7,6 +7,25 @@
     <%= tr_for @admin_form, :id, :title, :description %>
   </tbody>
 </table>
+
+<div class="page-header"><h2><%= Field.model_name.human %></h2></div>
+
+<table id="fields" class="table">
+  <thead>
+    <tr>
+      <%= th_for Field, :name, :type, :required, :multiple, :options %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admin_form.fields.each do |field| %>
+      <tr class="fields">
+        <%= td_for field, :name, :type, :required, :multiple, :options %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <div class="btn-group">
   <%= link_to t('crud.edit'), edit_admin_form_path(@admin_form), class: 'btn btn-info btn-lg' %>
   <%= link_to t('action.back'), admin_forms_path, class: 'btn btn-default btn-lg' %>

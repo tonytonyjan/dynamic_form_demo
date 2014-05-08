@@ -46,6 +46,7 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
 gem 'carrierwave'
+gem 'enumerize'
 
 # assets
 gem 'rails-assets-bootstrap'
