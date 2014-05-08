@@ -41,6 +41,7 @@ gem 'spring',        group: :development
 
 gem 'kaminari'
 gem 'simple_form', '3.1.0.rc1'
+gem 'nested_form'
 gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'

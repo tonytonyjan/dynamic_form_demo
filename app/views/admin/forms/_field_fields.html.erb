@@ -1,0 +1,21 @@
+<table id="fields" class="table">
+  <thead>
+    <tr>
+      <%= th_for Field, :name, :type, :required, :multiple, :options %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= f.simple_fields_for :fields, wrapper: false do |ff| %>
+      <tr class="fields">
+        <td><%= ff.input :name, label: false %></td>
+        <td><%= ff.input :type, label: false %></td>
+        <td><%= ff.input :required, label: false %></td>
+        <td><%= ff.input :multiple, label: false %></td>
+        <td><%= ff.input :options, label: false %></td>
+        <td><%= ff.link_to_remove 'remove' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= f.link_to_add "Add a price", :fields, class: 'btn btn-xs btn-success', data: {target: '#fields'} %>

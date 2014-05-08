@@ -69,6 +69,11 @@ class Admin::FormsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_form_params
-      params.require(:admin_form).permit(:title, :description)
+      params
+        .require(:admin_form)
+        .permit(
+          :title, :description,
+          fields_attributes: %i[name type required multiple options]
+        )
     end
 end

@@ -11,6 +11,7 @@ class Field < ActiveRecord::Base
   belongs_to :form
 
   # validation macros
+  enum type: %i[text textarea]
 
   # callbacks
 

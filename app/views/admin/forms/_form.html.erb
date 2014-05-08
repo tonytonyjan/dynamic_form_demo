@@ -1,8 +1,9 @@
-<%= simple_form_for(@admin_form, wrapper: :horizontal_form, html: {class: 'form-horizontal'}) do |f| %>
+<%= simple_nested_form_for(@admin_form, wrapper: :horizontal_form, html: {class: 'form-horizontal'}) do |f| %>
 
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :description %>
+    <%= render 'field_fields', f: f %>
   </div>
 
   <div class="form-actions">
