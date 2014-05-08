@@ -8,6 +8,7 @@ class Admin::Form < Form
   # Attributes related macros
 
   # association macros
+  has_many :attendees
   has_many :fields
 
   # validation macros

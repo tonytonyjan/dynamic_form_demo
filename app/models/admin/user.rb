@@ -8,6 +8,7 @@ class Admin::User < User
   # Attributes related macros
 
   # association macros
+  has_many :attendees
 
   # validation macros
 

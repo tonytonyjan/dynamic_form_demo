@@ -4,9 +4,11 @@ zh-TW:
       user: 成員
       form: 報名表
       field: 欄位
+      attendee: 報名
     attributes:
       user:
         email: 電子郵件
+        password: 密碼
       form:
         title: 標題
         description: 敘述
@@ -17,6 +19,9 @@ zh-TW:
         required: 必填
         multiple: 多選
         options: 選項
+      attendee:
+        user: 報名者
+        form: 報名活動
   enumerize:
     field:
       type:
