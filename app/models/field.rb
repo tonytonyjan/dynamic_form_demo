@@ -18,6 +18,10 @@ class Field < ActiveRecord::Base
   # callbacks
 
   # other
+  def options= obj
+    obj = obj.split(',') if obj.is_a? String
+    super obj
+  end
 
   protected
   # callback methods
