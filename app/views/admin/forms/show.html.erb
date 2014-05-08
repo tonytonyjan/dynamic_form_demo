@@ -36,10 +36,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @admin_form.attendees.each do |field| %>
+    <% @admin_form.attendees.each do |attendee| %>
       <tr>
-        <%= td_for field, :id, %i[user email] %>
-        <%= td_action_for field %>
+        <%= td_for attendee, :id, %i[user email] %>
+        <td><%= link_to t('crud.show'), admin_form_attendee_path(@admin_form, attendee) %></td>
+        <td><%= link_to t('crud.edit'), edit_admin_form_attendee_path(@admin_form, attendee) %></td>
+        <td><%= link_to t('crud.destroy'), admin_form_attendee_path(@admin_form, attendee), method: :delete, data: { confirm: t('message.are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>

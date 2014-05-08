@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'select2/results', format: :json
   namespace :admin do
     root to: :dashboard
-    resources :users, :forms, :attendees
+    resources :users
+    resources :forms do
+      resources :attendees
+    end
   end
 end

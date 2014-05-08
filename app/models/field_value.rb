@@ -1,4 +1,4 @@
-class Attendee < ActiveRecord::Base
+class FieldValue < ActiveRecord::Base
   # scope macros
 
   # Concerns macros
@@ -8,10 +8,8 @@ class Attendee < ActiveRecord::Base
   # Attributes related macros
 
   # association macros
-  belongs_to :user
-  belongs_to :form
-  has_many :field_values
-  accepts_nested_attributes_for :field_values
+  belongs_to :attendee
+  belongs_to :field
 
   # validation macros
 

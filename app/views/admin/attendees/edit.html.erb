@@ -3,6 +3,6 @@
 <%= render 'form' %>
 <hr>
 <div class="btn-group">
-  <%= link_to t('crud.show'), @admin_attendee, class: 'btn btn-info btn-lg' %>
-  <%= link_to t('action.back'), admin_attendees_path, class: 'btn btn-default btn-lg' %>
+  <%= link_to t('crud.show'), [@admin_form, @admin_attendee.becomes(Attendee)], class: 'btn btn-info btn-lg' %>
+  <%= link_to t('action.back'), [@admin_form, Attendee], class: 'btn btn-default btn-lg' %>
 </div>

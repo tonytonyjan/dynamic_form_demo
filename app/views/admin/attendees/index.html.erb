@@ -1,4 +1,4 @@
-<h1><%= Admin::Attendee.model_name.human %> <%= link_to t('crud.new'), new_admin_attendee_path, class: 'btn btn-lg btn-success' %></h1>
+<h1>「<%= @admin_form.title %>」 - <%= Admin::Attendee.model_name.human %> <%= link_to t('crud.new'), new_admin_form_attendee_path, class: 'btn btn-lg btn-success' %></h1>
 
 <%= paginate @admin_attendees %>
 
@@ -16,7 +16,9 @@
     <% @admin_attendees.each do |admin_attendee| %>
       <tr>
         <%= td_for admin_attendee, :id, %i[user email], %i[form title] %>
-        <%= td_action_for admin_attendee %>
+        <td><%= link_to t('crud.show'), admin_form_attendee_path(@admin_form, admin_attendee) %></td>
+        <td><%= link_to t('crud.edit'), edit_admin_form_attendee_path(@admin_form, admin_attendee) %></td>
+        <td><%= link_to t('crud.destroy'), admin_form_attendee_path(@admin_form, admin_attendee), method: :delete, data: { confirm: t('message.are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>

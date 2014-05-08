@@ -6,4 +6,4 @@ rails g model field form:references name:string type:integer required:boolean mu
 rails g model attendee user:references:uniq form:references
 rails g scaffold admin/attendee user:references form:references --migration=false --parent=attendee
 
-rails g model field_data attendee:references field:references value:string
+rails g model field_data attendee:references field:references value:text

@@ -9,6 +9,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -16,6 +17,7 @@
     <% @admin_forms.each do |admin_form| %>
       <tr>
         <%= td_for admin_form, :id, :title, :description %>
+        <td><%= link_to Attendee.model_name.human, [admin_form, Attendee] %></td>
         <%= td_action_for admin_form %>
       </tr>
     <% end %>

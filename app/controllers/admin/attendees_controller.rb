@@ -1,10 +1,11 @@
 class Admin::AttendeesController < AdminController
+  before_action :set_admin_form
   before_action :set_admin_attendee, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/attendees
   # GET /admin/attendees.json
   def index
-    @admin_attendees = Admin::Attendee.all.order('id DESC').page(params[:page])
+    @admin_attendees = @admin_form.attendees.all.order('id DESC').page(params[:page])
   end
 
   # GET /admin/attendees/1
@@ -28,7 +29,7 @@ class Admin::AttendeesController < AdminController
 
     respond_to do |format|
       if @admin_attendee.save
-        format.html { redirect_to @admin_attendee, notice: t('crud.created_successfully!', name: Admin::Attendee.model_name.human) }
+        format.html { redirect_to admin_form_attendee_path(@admin_form, @admin_attendee), notice: t('crud.created_successfully!', name: Admin::Attendee.model_name.human) }
         format.json { render :show, status: :created, location: @admin_attendee }
       else
         format.html { render :new }
@@ -56,7 +57,7 @@ class Admin::AttendeesController < AdminController
   def destroy
     @admin_attendee.destroy
     respond_to do |format|
-      format.html { redirect_to admin_attendees_url }
+      format.html { redirect_to [@admin_form, Attendee] }
       format.json { head :no_content }
     end
   end
@@ -67,8 +68,16 @@ class Admin::AttendeesController < AdminController
       @admin_attendee = Admin::Attendee.find(params[:id])
     end
 
+    def set_admin_form
+      @admin_form = Admin::Form.find(params[:form_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_attendee_params
-      params.require(:admin_attendee).permit(:user_id, :form_id)
+      params
+        .require(:admin_attendee)
+        .permit(
+          :user_id, :form_id, field_values_attributes: %i[id _destroy attendee_id field_id]
+        )
     end
 end
