@@ -45,6 +45,7 @@ gem 'nested_form'
 gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
+gem 'carrierwave'
 
 # assets
 gem 'rails-assets-bootstrap'

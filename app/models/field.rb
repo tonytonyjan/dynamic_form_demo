@@ -1,4 +1,5 @@
 class Field < ActiveRecord::Base
+  self.inheritance_column = nil
   # scope macros
 
   # Concerns macros

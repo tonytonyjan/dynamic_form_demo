@@ -73,7 +73,7 @@ class Admin::FormsController < AdminController
         .require(:admin_form)
         .permit(
           :title, :description,
-          fields_attributes: %i[name type required multiple options]
+          fields_attributes: %i[id name type required multiple options _destroy]
         )
     end
 end
