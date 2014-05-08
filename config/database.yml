@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: dynamic_form_demo_production
-  username: dynamic_form_demo
+  # username: dynamic_form_demo
   password: <%= ENV['DYNAMIC_FORM_DEMO_DATABASE_PASSWORD'] %>
