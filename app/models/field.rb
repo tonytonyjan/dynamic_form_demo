@@ -13,7 +13,7 @@ class Field < ActiveRecord::Base
   belongs_to :form
 
   # validation macros
-  enumerize :type, in: %i[text textarea]
+  enumerize :type, in: %i[text textarea checkbox select]
 
   # callbacks
 

@@ -17,3 +17,10 @@ zh-TW:
         required: 必填
         multiple: 多選
         options: 選項
+  enumerize:
+    field:
+      type:
+        text: 單行文字
+        textarea: 多行文字
+        checkbox: 勾選方塊
+        select: 下拉選單

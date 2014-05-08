@@ -36,6 +36,7 @@ $(document).on 'page:change', () ->
     tags: []
     width: '100%'
     initSelection: (element, callback) ->
+      $(element).val('')
       callback $(element).data('init').map (value) ->
         id: value, text: value
     createSearchChoice: (term) ->

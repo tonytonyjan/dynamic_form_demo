@@ -14,9 +14,11 @@ module AdminHelper
     case attribute
     when Array
       association = record.send(attribute[0])
-      link_to association.send(attribute[1]), association rescue association.send(attribute[1])
+      link_to association.send(attribute[1]), association rescue association.send(attribute[1]) 
     when Symbol
       case val = record.send(attribute)
+      when TrueClass, FalseClass
+        val ? t('true') : t('false')
       when CarrierWave::Uploader::Base
         uploader = if val.version_exists?(:preview) && val.preview.present? then val.preview
                    elsif val.version_exists?(:thumb) && val.thumb.present? then val.thumb

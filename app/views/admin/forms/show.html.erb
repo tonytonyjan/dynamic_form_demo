@@ -20,7 +20,7 @@
   <tbody>
     <% @admin_form.fields.each do |field| %>
       <tr class="fields">
-        <%= td_for field, :name, :type, :required, :multiple, :options %>
+        <%= td_for field, :name, :type_text, :required, :multiple, :options %>
       </tr>
     <% end %>
   </tbody>
