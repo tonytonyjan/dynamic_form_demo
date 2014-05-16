@@ -77,5 +77,18 @@ module AdminHelper
       end
       ret2
     end
+
+    if errors = has_error?(attendee, field)
+      ret += content_tag(:p, errors.join(', '), class: 'help-block')
+    end
+    ret
+  end
+
+  def has_error_class attendee, field
+    'has-error' if has_error? attendee, field
+  end
+
+  def has_error? attendee, field
+    attendee.errors.messages[field.name.to_sym].presence
   end
 end

@@ -15,8 +15,8 @@
     </div>
 
     <% @admin_form.fields.each do |field| %>
-      <div class="form-group">
-        <%= label_tag 'xxx', field.name, class: 'col-sm-1 control-label' %>
+      <div class="form-group <%= has_error_class @admin_attendee, field %>">
+        <%= label_tag 'xxx', "#{'*' if has_error?(@admin_attendee, field)}#{field.name}", class: 'col-sm-1 control-label' %>
         <div class="col-sm-9">
           <%= build_input @admin_attendee, field %>
         </div>

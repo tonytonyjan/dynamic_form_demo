@@ -29,11 +29,20 @@ class Attendee < ActiveRecord::Base
   validate :check_required_fields
 
   # callbacks
+  after_initialize do
+    field_values.each do |field_value|
+      self.class.send :define_method, field_value.field.name do
+        field_value.value
+      end
+    end
+  end
 
   # other
   def check_required_fields
     field_values.each do |field_value|
-      
+      if field_value.field.required && field_value.value.blank?
+        errors.add(field_value.field.name, :blank)
+      end
     end
   end
 
