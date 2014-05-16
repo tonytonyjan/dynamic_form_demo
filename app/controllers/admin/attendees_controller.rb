@@ -15,7 +15,7 @@ class Admin::AttendeesController < AdminController
 
   # GET /admin/attendees/new
   def new
-    @admin_attendee = Admin::Attendee.new
+    @admin_attendee = @admin_form.attendees.new
   end
 
   # GET /admin/attendees/1/edit
