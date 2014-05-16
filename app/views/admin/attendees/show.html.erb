@@ -5,10 +5,10 @@
   </thead>
   <tbody>
     <%= tr_for @admin_attendee, :id, %i[user email], %i[form title] %>
-    <% @admin_form.fields.each do |field| %>
+    <% @admin_attendee.field_values.each do |field_value| %>
       <tr>
-        <td><%= field.name %></td>
-        <td><%= field.value_of(@admin_attendee).try(:value) %></td>
+        <td><%= field_value.field.name %></td>
+        <td><%= field_value.value_text %></td>
       </tr>
     <% end %>
   </tbody>

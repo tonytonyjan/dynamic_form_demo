@@ -76,7 +76,7 @@ class Admin::AttendeesController < AdminController
       params
         .require(:admin_attendee)
         .permit(
-          :user_id, :form_id, field_values_attributes: %i[id _destroy attendee_id field_id value]
+          :user_id, :form_id, field_values_attributes: [:id, :_destroy, :attendee_id, :field_id, :value, value: []]
         )
     end
 end
