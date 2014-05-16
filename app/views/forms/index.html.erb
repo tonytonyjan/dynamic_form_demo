@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h1><%= Form.model_name.human %></h1>
+</div>
+
+<%= paginate @forms %>
+
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr>
+      <%= th_for Form, :title %>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forms.each do |form| %>
+      <tr>
+        <td><%= link_to form.title, form %></td>
+        <td><%= link_to Attendee.model_name.human, new_form_attendee_path(form) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @forms %>
