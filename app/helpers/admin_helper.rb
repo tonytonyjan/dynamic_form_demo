@@ -55,7 +55,8 @@ module AdminHelper
   def build_input attendee, field
     id = SecureRandom.random_number(9999999999999)
     ret = hidden_field_tag "admin_attendee[field_values_attributes][#{id}][field_id]", field.id
-    if field_value = field.value_of(attendee)
+    field_value = attendee.field_values.select{|v| v.field_id == field.id }.first
+    if field_value
       ret += hidden_field_tag "admin_attendee[field_values_attributes][#{id}][id]", field_value.id
     end
     input_name = "admin_attendee[field_values_attributes][#{id}][value]"
@@ -74,7 +75,7 @@ module AdminHelper
         field.options.each_with_index do |option, i|
           id = "check_#{i}"
           ret2 += content_tag :div, class: :radio do
-            label_tag id, check_box_tag(input_name, option, input_value.include?(option), id: id) + option
+            label_tag id, check_box_tag(input_name, option, Array(input_value).include?(option), id: id) + option
           end
         end
       else
