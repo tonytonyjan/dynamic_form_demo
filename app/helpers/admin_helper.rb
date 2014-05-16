@@ -52,14 +52,14 @@ module AdminHelper
   def notice_message
   end
 
-  def build_input attendee, field
+  def build_input attendee, field, as: :admin_attendee
     id = SecureRandom.random_number(9999999999999)
-    ret = hidden_field_tag "admin_attendee[field_values_attributes][#{id}][field_id]", field.id
+    ret = hidden_field_tag "#{as}[field_values_attributes][#{id}][field_id]", field.id
     field_value = attendee.field_values.select{|v| v.field_id == field.id }.first
     if field_value
-      ret += hidden_field_tag "admin_attendee[field_values_attributes][#{id}][id]", field_value.id
+      ret += hidden_field_tag "#{as}[field_values_attributes][#{id}][id]", field_value.id
     end
-    input_name = "admin_attendee[field_values_attributes][#{id}][value]"
+    input_name = "#{as}[field_values_attributes][#{id}][value]"
     input_value = field_value ? field_value.value : nil
     ret += case field.type
     when 'text'

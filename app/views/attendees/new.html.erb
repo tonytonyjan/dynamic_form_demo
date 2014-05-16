@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h1><%= @form.title %></h1>
+</div>
+
+<%= simple_form_for(@attendee, url: [@form, @attendee], wrapper: :horizontal_form, html: {class: 'form-horizontal'}) do |f| %>
+
+  <div class="form-inputs">
+    <% @form.fields.each do |field| %>
+      <div class="form-group <%= has_error_class @attendee, field %>">
+        <%= label_tag 'xxx', "#{'*' if field.required}#{field.name}", class: 'col-sm-1 control-label' %>
+        <div class="col-sm-9">
+          <%= build_input @attendee, field, as: :attendee %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-lg btn-primary' %>
+  </div>
+<% end %>
